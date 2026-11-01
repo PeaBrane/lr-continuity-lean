@@ -1,0 +1,21 @@
+name = "lr_continuity"
+version = "0.1.0"
+defaultTargets = ["Peapods"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "d13f23b723b8a846827a245b89c10fc7d3f11612"
+
+# Vendored unmodified from openai/math (Apache-2.0); see OAI/README.md.
+[[lean_lib]]
+name = "OAI"
+roots = []
+globs = ["OAI.Probability.CriticalZ3.*"]
+
+[[lean_lib]]
+name = "Peapods"
