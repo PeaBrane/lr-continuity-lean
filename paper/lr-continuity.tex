@@ -19,6 +19,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
 \numberwithin{equation}{section}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\R}{\mathbb R}
@@ -307,7 +308,7 @@ formal proof uses no unformalized result and depends only on Lean's three standa
 \subsection{Organization}
 Section~\ref{sec:prelim} collects the inputs. Sections~\ref{sec:faces}--\ref{sec:exploration} carry
 out Steps~1--4, and Section~\ref{sec:corollaries} proves the corollaries and records where each
-hypothesis is used.
+hypothesis is used. Section~\ref{sec:open} closes with open problems.
 
 \section{Preliminaries}\label{sec:prelim}
 
@@ -862,6 +863,41 @@ probability of order one at every scale. In $d=1$ and $J(x)\asymp|x|^{-2}$ the t
 plane. Apart from sufficiently spread-out kernels in $d\ge7$, where $d>6=3(\alpha\wedge2)$
 and~\cite{HeydenreichHofstadSakai2008} applies, whether $\theta(\beta_c)=0$ for $\alpha=d\ge2$ remains open.
 \end{remark}
+
+\section{Closing discussion and open problems}\label{sec:open}
+
+\paragraph{The borderline exponent.} Remark~\ref{rem:border} explains why the argument stops at
+$\alpha=d$: long edges leave cubes with probability of order one at every scale, so neither the
+long-edge term of Lemma~\ref{lem:faces} nor the long entrances of Lemma~\ref{lem:extension} can be
+made small.
+\begin{question}\label{q:border}
+Let $d\ge2$ and let $J$ satisfy \textup{(Sym)} and $c\norm{x}^{-2d}\le J(x)\le C\norm{x}^{-2d}$ for
+all $x\ne0$, with $0<c\le C<\infty$. Is $\theta(\beta_c)=0$?
+\end{question}
+In $d=1$ the transition for $J(x)\asymp|x|^{-2}$ is discontinuous
+\cite{AizenmanNewman1986,DuminilCopinGarbanTassion2020}, so a positive answer has to use $d\ge2$.
+
+\paragraph{Symmetry.} By Remark~\ref{rem:hyp}, (Sym) is used only to give the faces of
+Lemma~\ref{lem:faces} equal probabilities and to reduce the relay to one orientation, and (Pos) only
+for $\beta_c<\infty$ and for the connectivity of open boxes.
+\begin{question}\label{q:sym}
+Let $d\ge2$ and let $J(x)=J(-x)$ satisfy \textup{(Tail)}, with support generating $\Z^d$. Is
+$\theta(\beta_c)=0$?
+\end{question}
+
+\paragraph{Quantitative bounds.} The proof works by contradiction: from $\theta(\beta_c)>0$ it
+produces $q<\beta_c$ with $\theta(q)>0$. It therefore gives no bound on $\theta(\beta)$ for
+$\beta>\beta_c$, nor on $\Pp_{\beta_c}(0\lr\Z^d\setminus\Lam_n)$, and the renormalization argument
+of~\cite{OpenAIZ3} that it adapts is qualitative in the same way.
+\begin{question}\label{q:rate}
+Under the hypotheses of Theorem~\ref{thm:main}, are there $c,C>0$ such that
+$\theta(\beta)\le C(\beta-\beta_c)^c$ for all $\beta>\beta_c$ close to $\beta_c$?
+\end{question}
+
+\paragraph{Formalization.} The Lean proof described in Section~\ref{sec:formal} covers
+Theorem~\ref{thm:main}. Corollary~\ref{cor:exp} and the case $\alpha>d$ of Corollary~\ref{cor:power}
+follow from it by bounding $T(n)$. The case $\alpha<d$ would need a formalization of Berger's
+theorem~\cite{Berger2002}.
 
 {\small\raggedright
 \begin{thebibliography}{99}
